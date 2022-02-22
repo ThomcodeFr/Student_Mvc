@@ -1,1 +1,1 @@
-<strong>Le tag <b><?= $id ?></b> a été supprimé (s'il existe) </strong>
+<strong>Le champ de l'étudiant <b><?= $id ?></b> a été supprimé (s'il existe) </strong>

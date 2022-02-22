@@ -10,7 +10,7 @@
       </a>
 
       <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Informations Légales</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Mentions Légales</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Plan du site</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contact</a></li>
       </ul>

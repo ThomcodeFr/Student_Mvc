@@ -19,6 +19,11 @@ $op = $_GET['op'] ?? ''; //operation deleted
     case 'project':
       require('controller/ProjectController.php');
       break;
+
+      default:
+      require('vue/content_index.php');
+      break;
+
   }
 
 require_once('vue/foot.php');

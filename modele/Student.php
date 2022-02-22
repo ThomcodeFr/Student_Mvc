@@ -10,11 +10,11 @@ class Student //
     public string $email;
     public string $created_at;
     public string $updated_at;
-    private $pdo;
+    private $pdo; //recupère la requête SQL
 
     public function __construct()
     {
-        $this->pdo = getpdo();
+        $this->pdo = getpdo(); //permet un objet de se connecter à la base de données
     }
 
     public function all()
@@ -28,7 +28,7 @@ class Student //
 
     public function select($id)
     {
-        $sql = 'id, school_year_id, project_id, firstname, lastname, email, created_at, updated_at from tag where id = :id';
+        $sql = 'select id, school_year_id, project_id, firstname, lastname, email, created_at, updated_at from student where id = :id';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
