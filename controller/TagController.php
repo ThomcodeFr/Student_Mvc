@@ -22,7 +22,7 @@ function validForm($tag)
 
   $tag->description = null;
   if (isset($_POST['description'])) {
-    $tag->description = trim(filter_input(INPUT_POST, "description", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $tag->description = trim(filter_input(INPUT_POST, "description", FILTER_SANITIZE_STRING));
   }
   if ($tag->description === "") {
     $tag->description = null;
@@ -67,6 +67,18 @@ switch ($op) {
         require_once('vue/tag_liste.php');
       }
     }
+    case 'insert':
+      if ($id > 0) {
+        if (empty($_POST))
+        require_once('vue/tag_add.php');
+      } else {
+      if (validForm($tag)) {
+        $tag->insert();
+      }
+      $tags = $tag->all();
+      require_once('vue/tag_liste.php');
+
+      }
     break;
 
   default:

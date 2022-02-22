@@ -4,8 +4,8 @@ class Tag //Permet de gérer nos tags
 { //création d'une classe et déclaration de la base de données en attribut object.
   //cela permet d'accèder à notre base de données avec une syntaxe PHP obligatoire
   //La class tag fait l'intermédiaire entre le php et la base de données
-  public int $id;
-  public string $name;
+  public ?int $id;
+  public ?string $name;
   public ?string $description;
   private $pdo;
 
@@ -13,6 +13,9 @@ class Tag //Permet de gérer nos tags
   public function __construct()
   {
     $this->pdo = getpdo(); //permet de savoir comment se connecter à la base de données
+    $this->id = null; //Mise en valeur par défaut de l'id, à chaque new tag
+    $this->name = null; //Mise en valeur par défaut du name, à chaque new tag
+    $this->description = null; //Mise en valeur par défaut du description, à chaque new tag
   }
 
   public function all()
@@ -42,7 +45,7 @@ class Tag //Permet de gérer nos tags
   public function insert()
   {
     $sql = 'insert into tag (name, description)';
-    $sql = $sql . ' values (:name, :description)';
+    $sql = $sql . 'values (:name, :description)';
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindParam(':name', $this->name);
     $stmt->bindParam(':description', $this->description);

@@ -6,6 +6,7 @@
     <th>Description</th>
   </tr>
 
+
   <?php
   foreach ($tags as $tag) { ?>
     <tr>
@@ -14,6 +15,8 @@
       <td><?= $tag['description'] ?></td>
       <td><a href="index.php?table=tag&id=<?= $tag['id'] ?>&op=update">🖊️</a></td>
       <td><a href="index.php?table=tag&id=<?= $tag['id'] ?>&op=delete">❌</a></td>
+      <td><a href="index.php?table=tag&id=<?= $tag['id'] ?>&op=insert">➕</a></td>
+
     </tr>
   <?php } ?>
 

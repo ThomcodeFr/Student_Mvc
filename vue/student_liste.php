@@ -18,6 +18,8 @@
       <td><?= $student['updated_at'] ?></td>
       <td><a href="index.php?table=student&id=<?= $student['id'] ?>&op=update">🖊️</a></td>
       <td><a href="index.php?table=student&id=<?= $student['id'] ?>&op=delete">❌</a></td>
+      <td><a href="index.php?table=student&id=<?= $student['id'] ?>&op=insert">➕</a></td>
+
     </tr>
   <?php } ?>
 
