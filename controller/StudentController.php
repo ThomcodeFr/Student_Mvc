@@ -6,34 +6,36 @@ $student = new Student();
 function validForm($student)
 {
   if (!isset($_POST['firstname'])) {
-    return false;
+    return "Le champ Prénom est manquant";
   }
   $temp = trim(filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_FULL_SPECIAL_CHARS)); // trim enlève les espaces
 
   if ($temp === "") {
-    return false;
+    return "Erreur : Champ prénom invalide";
   }
   $student->firstname = $temp;
 
   if (!isset($_POST['lastname'])) {
-    return false;
+    return "Le champ Nom est manquant";
   }
   $temp = trim(filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_FULL_SPECIAL_CHARS)); // trim enlève les espaces
 
   if ($temp === "") {
-    return false;
+    return "Champ Nom invalide";
   }
   $student->lastname = $temp;
 
   if (!isset($_POST['email'])) {
-    return false;
+    return  "Champ email invalide";
   }
-  $temp = trim(filter_input(INPUT_POST, "email", FILTER_SANITIZE_FULL_SPECIAL_CHARS)); // trim enlève les espaces
+  $temp = trim(filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL)); // trim enlève les espaces
 
   if ($temp === "") {
-    return false;
+    return "Le champ email est manquant";
   }
   $student->email = $temp;
+
+  return true;
 }
 
 switch ($op) {
@@ -66,11 +68,16 @@ switch ($op) {
         require_once('vue/student_update.php');
       } else {
         $student->select($id);
-        if (validForm($student)) {
+        $testForm = validForm($student);
+        if ($testForm === true) {
           $student->update();
+          $students = $student->all();
+          require_once('vue/student_liste.php');
+        } else {
+          $errorMessage = $testForm;
+          require 'vue/error.php';
+          require 'vue/student_update.php';
         }
-        $students = $student->all();
-        require_once('vue/student_liste.php');
       }
     }
     break;
@@ -79,21 +86,3 @@ switch ($op) {
     $students = $student->all();
     require_once('vue/student_liste.php');
 }
-
-
-/* if ($table === 'student' || $table === ''); {
-    require('modele/Student.php');
-    $student = new Student();
-
-    if ($op === 'delete') {
-        if ($id > 0) {
-            $student->delete($id);
-            $students = $student->all();
-            require_once('vue/student_delete.php');
-            require_once('vue/student_liste.php');
-        }
-    } else {
-        $students = $student->all();
-        require_once('vue/student_liste.php');
-    }
-} */

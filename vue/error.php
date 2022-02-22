@@ -1,0 +1,2 @@
+
+<span class="error"> <?= $errorMessage?> </span>
