@@ -91,14 +91,12 @@ switch ($op) {
       }
     }
   case 'insert':
-    if ($id > 0) {
       if (empty($_POST)) {
         require 'modele/SchoolYear.php';
         $school_year = new SchoolYear();
         $school_years = $school_year->all();
         require_once('vue/student_add.php');
-      }
-    } else {
+      } else {
       if (ValidForm($student)) {
         $student->insert();
       }

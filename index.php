@@ -8,7 +8,9 @@ $id = $_GET['id'] ?? null;
 $op = $_GET['op'] ?? ''; //operation deleted
 
 // Le contrôleur permet de modifier l'affichage des pages sans avoir recours à des pages supplémentaires
-
+?>
+<section id="container">
+  <?php
   switch ($table) {
     case 'tag':
       require('controller/TagController.php');
@@ -20,10 +22,12 @@ $op = $_GET['op'] ?? ''; //operation deleted
       require('controller/ProjectController.php');
       break;
 
-      default:
+    default:
       require('vue/content_index.php');
       break;
-
   }
+  ?>
+</section>
 
+<?php
 require_once('vue/foot.php');

@@ -7,7 +7,7 @@
 
   <label>Description</label><br />
   <textarea rows="5" cols="20" name="description" placeholder="Ajoutez une description"><?= $tag->description ?></textarea><br />
-
+  <br>
   <input type="submit" value="Validez les valeurs" />
 
 </form>

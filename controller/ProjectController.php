@@ -3,7 +3,7 @@
 require('modele/Project.php');
 $project = new Project();
 
-function validForm1($project)
+function validForm3($project)
 {
   if (!isset($_POST['name'])) {
     return "Le champ du Nom du projet est manquant";
@@ -19,6 +19,22 @@ function validForm1($project)
     return "Le champ Description est manquant";
   }
   $temp = trim(filter_input(INPUT_POST, "description", FILTER_SANITIZE_FULL_SPECIAL_CHARS)); // trim enlève les espaces
+
+  if ($temp === "") {
+    return "Erreur : Champ Description invalide";
+  }
+  $project->description = $temp;
+
+
+  if (!isset($_POST['client_name'])) {
+    return "Le champ du nom du client est manquant";
+  }
+  $temp = trim(filter_input(INPUT_POST, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS)); // trim enlève les espaces
+
+  if ($temp === "") {
+    return "Erreur : Champ Nom invalide";
+  }
+  $project->client_name = $temp;
 
   return true;
 }
@@ -53,7 +69,7 @@ switch ($op) {
         require_once('vue/project_update.php');
       } else {
         $project->select($id);
-        $testForm = validForm1($project);
+        $testForm = validForm3($project);
         if ($testForm === true) {
           $project->update();
           $projects = $project->all();
@@ -64,6 +80,16 @@ switch ($op) {
           require 'vue/project_update.php';
         }
       }
+    }
+  case 'insert':
+    if (empty($_POST)) {
+      require_once('vue/project_add.php');
+    } else {
+      if (validForm3($project)) {
+        $project->insert();
+      }
+      $projects = $project->all();
+      require_once('vue/project_liste.php');
     }
     break;
 

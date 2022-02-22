@@ -23,6 +23,10 @@ menu li {
   border: black 1px solid;
 }
 
+#container {
+  text-align: center;
+}
+
 table {
   display: flex;
   justify-content: center;
@@ -54,3 +58,4 @@ a:visited {
   justify-content: flex-end;
   margin-right: 10px;
 }
+

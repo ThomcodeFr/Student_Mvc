@@ -6,5 +6,6 @@
   <textarea rows="3" cols="20" name="description" placeholder="Ajoutez la description"><?=$project->description?></textarea><br />
   <label>Nom du client</label><br />
   <textarea rows="3" cols="20" name="client_name" placeholder="Entrez le nom du client"><?=$project->client_name?></textarea><br />
+  <br>
   <input type="submit" value="Validez les valeurs" />
 </form>
