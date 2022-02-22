@@ -37,6 +37,6 @@ function getPdO()
 function resetDb()//récrée et reinitiliser completement la base de données. Pour faire les tests
 {
     global $pdo;
-    $sql = file_get_contents('modele/student.sql');
+    $sql = file_get_contents('modele/Sql/student.sql');
     $pdo->exec($sql);
 }
