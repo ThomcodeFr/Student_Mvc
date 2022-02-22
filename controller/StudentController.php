@@ -35,6 +35,16 @@ function validForm($student)
   }
   $student->email = $temp;
 
+  if (!isset($_POST['school_year_id'])) {
+    return "Le champ ID de l'année scolaire est manquant";
+  }
+  $temp = filter_input(INPUT_POST, "school_year_id", FILTER_VALIDATE_INT);
+
+  if ($temp === false or is_null($temp)) {
+    return "Le champ du School Year ID est manquant ou incorrect";
+  }
+  $student->school_year_id = $temp;
+
   return true;
 }
 
@@ -79,6 +89,21 @@ switch ($op) {
           require 'vue/student_update.php';
         }
       }
+    }
+  case 'insert':
+    if ($id > 0) {
+      if (empty($_POST)) {
+        require 'modele/SchoolYear.php';
+        $school_year = new SchoolYear();
+        $school_years = $school_year->all();
+        require_once('vue/student_add.php');
+      }
+    } else {
+      if (ValidForm($student)) {
+        $student->insert();
+      }
+      $students = $student->all();
+      require_once('vue/student_liste.php');
     }
     break;
 

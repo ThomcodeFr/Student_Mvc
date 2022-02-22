@@ -14,8 +14,7 @@
       <td><?= $project['description'] ?></td>
       <td><a href="project_page.php?table=project&id=<?= $project['id'] ?>&op=update">🖊️</a></td>
       <td><a href="project_page.php?table=project&id=<?= $project['id'] ?>&op=delete">❌</a></td>
-      <td><a href="index.php?table=project&id=<?= $project['id'] ?>&op=insert">➕</a></td>
-
+      <td><a href="project_page.php?table=project&id=<?= $project['id'] ?>&op=insert">➕</a></td>
     </tr>
   <?php } ?>
 

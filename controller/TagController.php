@@ -22,7 +22,7 @@ function validForm($tag)
 
   $tag->description = null;
   if (isset($_POST['description'])) {
-    $tag->description = trim(filter_input(INPUT_POST, "description", FILTER_SANITIZE_STRING));
+    $tag->description = trim(filter_input(INPUT_POST, "description", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
   }
   if ($tag->description === "") {
     $tag->description = null;
