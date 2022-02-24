@@ -1,19 +1,11 @@
- <!--     Recherche sur mysql      -->
- <?php
-  $allUsers = $pdo->query('SELECT * FROM student ORDER BY id DESC ');
-  if (isset($_GET['research']) and !empty($_GET['research'])) {
-    $search = htmlspecialchars($_GET['research']);
-    $allUsers = $pdo->query('SELECT * FROM student WHERE lastname LIKE "%' . $search . '%" ORDER BY id DESC');
-  }
-  ?>
-
- <section class="researchView">
+         <section class="researchView">
    <?php
-    if (isset($_GET['research'])) {
       if ($allUsers->rowCount() > 0) { //rowCount -> compte le nombre de champs dans la requete
-        while ($studentsearch = $allUsers->fetch()) {
-    ?>
-         <section id="container">
+        while ($studentsearch = $allUsers->fetch())
+        {
+          ?>
+
+        <section id="container">
            <table>
              <td><?= $studentsearch['firstname'] ?></td>
              <td><?= $studentsearch['lastname'] ?></td>
@@ -28,8 +20,7 @@
    <?php
         }
       } else {
-        echo "Aucun utilisateur trouvé dans la BDD";
+        echo "Aucune donnée trouvée dans la Base de donnée";
       }
-    }
     ?>
  </section>

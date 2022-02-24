@@ -10,6 +10,7 @@ class Student //
   public ?string $email;
   public ?string $created_at;
   public ?string $updated_at;
+  public ?array $tags;
   private $pdo; //recupère la requête SQL
 
   public function __construct()
@@ -93,5 +94,22 @@ class Student //
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindParam(':id', $id);
     $stmt->execute();
+  }
+
+  public function tags()
+  {
+    $sql="SELECT tag. * FROM student_tag JOIN student ON student_tag.student_id = student.id JOIN tag ON student_tag.tag_id = tag.id WHERE student_tag.student_id=:id ORDER BY tag.id DESC";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindParam(':id', $this->id);
+    $stmt->execute();
+    $this->tags=$stmt->fetchAll();
+  }
+  public function allStudentAllTags(string $search='')
+  {
+    $sql = "SELECT student.*, tag.name FROM student_tag JOIN student ON student_tag.student_id = student.id JOIN tag ON student_tag.tag_id = tag.id WHERE tag.name LIKE '%$search%' OR student.firstname LIKE '%$search%' OR student.lastname LIKE '%$search%' ORDER BY tag.id DESC";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute();
+    return $stmt;
+
   }
 }

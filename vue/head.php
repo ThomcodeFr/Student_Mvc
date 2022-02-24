@@ -37,4 +37,4 @@
       </header>
     </div>
 
-   
+    <section id="centrage">
