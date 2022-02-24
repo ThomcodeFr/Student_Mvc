@@ -64,6 +64,9 @@ switch ($op) {
     }
   case 'update': {
       if ($id > 0) {
+        require 'modele/SchoolYear.php';
+        $school_year = new SchoolYear();
+        $school_years = $school_year->all();
         if (empty($_POST)) {
           $student->select($id);
           require_once('vue/student_update.php');
@@ -91,12 +94,12 @@ switch ($op) {
       }
     }
   case 'insert':
-      if (empty($_POST)) {
-        require 'modele/SchoolYear.php';
-        $school_year = new SchoolYear();
-        $school_years = $school_year->all();
-        require_once('vue/student_add.php');
-      } else {
+    if (empty($_POST)) {
+      require 'modele/SchoolYear.php';
+      $school_year = new SchoolYear();
+      $school_years = $school_year->all();
+      require_once('vue/student_add.php');
+    } else {
       if (ValidForm($student)) {
         $student->insert();
       }

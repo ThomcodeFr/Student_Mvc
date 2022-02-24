@@ -18,10 +18,9 @@ class Project //
     $this->name_project = null;
     $this->description = null;
     $this->client_name = null;
-    $this->start_name = null;
+    $this->start_date = null;
     $this->checkpoint_date = null;
     $this->delivery_date = null;
-
   }
 
   public function all()
@@ -41,7 +40,7 @@ class Project //
     $stmt->execute();
     $data = $stmt->fetch();
     $this->id = $data['id'];
-    $this->name = $data['name'];
+    $this->name_project  = $data['name_project'];
     $this->description = $data['description'];
     $this->client_name = $data['client_name'];
     $this->start_date = $data['start_date'];
@@ -54,7 +53,7 @@ class Project //
     $sql = 'insert into project (name_project, description, client_name, start_date, delivery_date)';
     $sql = $sql .  'values (:name_project, :description, :client_name, :start_date, :delivery_date)';
     $stmt = $this->pdo->prepare($sql);
-    $stmt->bindParam(':name', $this->name);
+    $stmt->bindParam(':name_project', $this->name_project);
     $stmt->bindParam(':description', $this->description);
     $stmt->bindParam(':client_name', $this->client_name);
     $stmt->bindParam(':start_date', $this->start_date);
@@ -70,7 +69,7 @@ class Project //
     $sql = $sql . ' where id = :id';
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindParam(':id', $this->id);
-    $stmt->bindParam(':name', $this->name);
+    $stmt->bindParam(':name_project', $this->name_project);
     $stmt->bindParam(':description', $this->description);
     $stmt->bindParam(':client_name', $this->client_name);
     $stmt->bindParam(':start_date', $this->start_date);

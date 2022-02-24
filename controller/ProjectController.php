@@ -5,15 +5,15 @@ $project = new Project();
 
 function validForm3($project)
 {
-  if (!isset($_POST['name'])) {
+  if (!isset($_POST['name_project'])) {
     return "Le champ du Nom du projet est manquant";
   }
-  $temp = trim(filter_input(INPUT_POST, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS)); // trim enlève les espaces
+  $temp = trim(filter_input(INPUT_POST, "name_project", FILTER_SANITIZE_FULL_SPECIAL_CHARS)); // trim enlève les espaces
 
   if ($temp === "") {
     return "Erreur : Champ Nom invalide";
   }
-  $project->name = $temp;
+  $project->name_project = $temp;
 
   if (!isset($_POST['description'])) {
     return "Le champ Description est manquant";
@@ -29,12 +29,22 @@ function validForm3($project)
   if (!isset($_POST['client_name'])) {
     return "Le champ du nom du client est manquant";
   }
-  $temp = trim(filter_input(INPUT_POST, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS)); // trim enlève les espaces
+  $temp = trim(filter_input(INPUT_POST, "client_name", FILTER_SANITIZE_FULL_SPECIAL_CHARS)); // trim enlève les espaces
 
   if ($temp === "") {
     return "Erreur : Champ Nom invalide";
   }
   $project->client_name = $temp;
+
+  if (!isset($_POST['delivery_date'])) {
+    return "Le champ de la date est manquant";
+  }
+  $temp = trim(filter_input(INPUT_POST, "delivery_date", FILTER_SANITIZE_FULL_SPECIAL_CHARS)); // trim enlève les espaces
+
+  if ($temp === "") {
+    return "Erreur : Champ Nom invalide";
+  }
+  $project->delivery_date = $temp;
 
   return true;
 }

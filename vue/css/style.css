@@ -41,12 +41,13 @@ table th {
   text-align: center;
   table-layout: auto;
   width: 200px;
-  background-color: rgb(124, 0, 0);
+  background-color: rgb(38, 126, 184);
   color: white;
 }
 
 table td {
   border: black solid 1px;
+  background-color: rgb(243, 242, 242);
   table-layout: auto;
   width: auto;
   height: auto;

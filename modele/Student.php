@@ -67,7 +67,7 @@ class Student //
     $stmt->bindParam(':created_at', $this->created_at);
     $stmt->bindParam(':updated_at', $this->updated_at);
     $stmt->execute();
-    $this->id = $this->pdo->lastInsertId(); //autoincrément, récupère l'ID inseré
+    $this->id = $this->pdo->lastInsertId(); //auto-incrément, récupère l'ID inseré
     $this->select($this->id); //securité, évite les bugs
   }
 
@@ -96,13 +96,13 @@ class Student //
     $stmt->execute();
   }
 
-  public function tags()
+  public function tags($id)
   {
-    $sql="SELECT tag. * FROM student_tag JOIN student ON student_tag.student_id = student.id JOIN tag ON student_tag.tag_id = tag.id WHERE student_tag.student_id=:id ORDER BY tag.id DESC";
+    $sql="SELECT tag.* FROM student_tag JOIN student ON student_tag.student_id = student.id JOIN tag ON student_tag.tag_id = tag.id WHERE student_tag.student_id=:id ORDER BY tag.id DESC";
     $stmt = $this->pdo->prepare($sql);
-    $stmt->bindParam(':id', $this->id);
+    $stmt->bindParam(':id', $id);
     $stmt->execute();
-    $this->tags=$stmt->fetchAll();
+    return $stmt->fetchAll();
   }
 
   public function allStudentAllTags(string $search='')

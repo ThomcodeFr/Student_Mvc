@@ -6,21 +6,31 @@
     <th>Adresse e-mail</th>
     <th>Crée le</th>
     <th>Mise à jour</th>
+    <td><a href="index.php?table=student&id=&op=insert">➕</a></td>
   </tr>
 
   <?php
-  foreach ($students as $student) { ?>
+  foreach ($students as $student1) { ?>
     <tr>
-      <td><?= $student['firstname'] ?></td>
-      <td><?= $student['lastname'] ?></td>
-      <td><?= $student['email'] ?></td>
-      <td><?= $student['created_at'] ?></td>
-      <td><?= $student['updated_at'] ?></td>
-      <td><a href="index.php?table=student&id=<?= $student['id'] ?>&op=update">🖊️</a></td>
-      <td><a href="index.php?table=student&id=<?= $student['id'] ?>&op=delete">❌</a></td>
-      <td><a href="index.php?table=student&id=<?= $student['id'] ?>&op=insert">➕</a></td>
-
+      <td><?= $student1['firstname'] ?></td>
+      <td><?= $student1['lastname'] ?></td>
+      <td><?= $student1['email'] ?></td>
+      <td><?= $student1['created_at'] ?></td>
+      <td><?= $student1['updated_at'] ?></td>
+      <td><a href="index.php?table=student&id=<?= $student1['id'] ?>&op=update">🖊️</a></td>
+      <td><a href="index.php?table=student&id=<?= $student1['id'] ?>&op=delete">❌</a></td>
     </tr>
-  <?php } ?>
+
+
+    <tr>
+      <td colspan="8">
+        <?php
+        $studentags=$student->tags($student1['id']);
+        foreach ($studentags as $studentag) {
+            echo "#" . $studentag['name'] . " ";
+        }
+      }
+      ?>
+
 
 </table>
