@@ -23,6 +23,10 @@ menu li {
   border: black 1px solid;
 }
 
+#content-html img {
+  width: 480px;
+}
+
 #centrage {
   text-align: center;
 }
@@ -35,10 +39,17 @@ table {
 table th {
   border: black solid 1px;
   text-align: center;
+  table-layout: auto;
+  width: 200px;
+  background-color: rgb(124, 0, 0);
+  color: white;
 }
 
 table td {
   border: black solid 1px;
+  table-layout: auto;
+  width: auto;
+  height: auto;
 }
 
 table td a {

@@ -13,7 +13,7 @@
   foreach ($projects as $project) { ?>
     <tr>
       <td><?= $project['id'] ?></td>
-      <td><?= $project['name'] ?></td>
+      <td><?= $project['name_project'] ?></td>
       <td><?= $project['description'] ?></td>
       <td><?= $project['client_name'] ?></td>
       <td><?= $project['delivery_date'] ?></td>

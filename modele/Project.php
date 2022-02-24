@@ -3,7 +3,7 @@
 class Project //
 {
   public ?int $id;
-  public ?string $name;
+  public ?string $name_project;
   public ?string $description;
   public ?string $client_name;
   public ?string $start_date;
@@ -15,7 +15,7 @@ class Project //
   {
     $this->pdo = getpdo();
     $this->id = null;
-    $this->name = null;
+    $this->name_project = null;
     $this->description = null;
     $this->client_name = null;
     $this->start_name = null;
@@ -26,7 +26,7 @@ class Project //
 
   public function all()
   {
-    $sql = 'select id, name, description, client_name, start_date, checkpoint_date, delivery_date from project';
+    $sql = 'select id, name_project, description, client_name, start_date, checkpoint_date, delivery_date from project';
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
     $data = $stmt->fetchAll();
@@ -35,7 +35,7 @@ class Project //
 
   public function select($id)
   {
-    $sql = 'select id, name, description, client_name, start_date, checkpoint_date, delivery_date from project where id = :id';
+    $sql = 'select id, name_project, description, client_name, start_date, checkpoint_date, delivery_date from project where id = :id';
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindParam(':id', $id);
     $stmt->execute();
@@ -51,8 +51,8 @@ class Project //
 
   public function insert()
   {
-    $sql = 'insert into project (name, description, client_name, start_date, delivery_date)';
-    $sql = $sql .  'values (:name, :description, :client_name, :start_date, :delivery_date)';
+    $sql = 'insert into project (name_project, description, client_name, start_date, delivery_date)';
+    $sql = $sql .  'values (:name_project, :description, :client_name, :start_date, :delivery_date)';
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindParam(':name', $this->name);
     $stmt->bindParam(':description', $this->description);
@@ -66,7 +66,7 @@ class Project //
 
   public function update()
   {
-    $sql = 'update project set name=:name, description=:description, client_name=:client_name, start_date=:start_date, checkpoint_date=:checkpoint_date, delivery_date=:delivery_date';
+    $sql = 'update project set name_project=:name_project, description=:description, client_name=:client_name, start_date=:start_date, checkpoint_date=:checkpoint_date, delivery_date=:delivery_date';
     $sql = $sql . ' where id = :id';
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindParam(':id', $this->id);

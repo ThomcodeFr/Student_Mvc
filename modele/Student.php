@@ -104,12 +104,12 @@ class Student //
     $stmt->execute();
     $this->tags=$stmt->fetchAll();
   }
+
   public function allStudentAllTags(string $search='')
   {
     $sql = "SELECT student.*, tag.name FROM student_tag JOIN student ON student_tag.student_id = student.id JOIN tag ON student_tag.tag_id = tag.id WHERE tag.name LIKE '%$search%' OR student.firstname LIKE '%$search%' OR student.lastname LIKE '%$search%' ORDER BY tag.id DESC";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
     return $stmt;
-
   }
 }
