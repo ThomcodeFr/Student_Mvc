@@ -1,6 +1,7 @@
 <?php
 require_once('vue/head.php');
 require_once('modele/db_connect.php');
+require_once('vue/search.php');
 //resetDb(); // Sert à recharger les tags
 
 $table = $_GET['table'] ?? '';

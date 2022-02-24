@@ -30,9 +30,11 @@
           <li><a href="index.php?table=tag" class="nav-link px-2 link-dark">Liste des Tags</a></li>
           <li><a href="index.php?table=project" class="nav-link px-2 link-dark">Liste des projets</a></li>
         </ul>
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" class="form-control form-control-dark" placeholder="Recherchez..." aria-label="Search">
+        <form method="GET" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input type="search" name="research" class="form-control form-control-dark" placeholder="Recherchez..." aria-label="Search">
         </form>
 
       </header>
     </div>
+
+   
