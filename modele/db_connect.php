@@ -4,7 +4,7 @@ include('env.php');
 
 // voici les paramètres de connexion
 // Soit la variable existe (car il y a env.php) soit elle n'existe pas
-$bdd_username = $bdd_username ?? 'src_mariadb';
+$bdd_username = $bdd_username ?? 'sc_mariardb';
 $bdd_password = $bdd_password ?? 'src_mariadb';
 $bdd_host = $bdd_host ?? 'localhost';
 $bdd_port = $bdd_port ?? 3306;
