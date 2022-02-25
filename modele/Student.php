@@ -53,8 +53,8 @@ class Student //
 
   public function insert()
   {
-    $this->created_at=date('Y-m-d H:i:s');
-    $this->updated_at=$this->created_at;
+    $this->created_at = date('Y-m-d H:i:s');
+    $this->updated_at = $this->created_at;
 
     $sql = 'insert into student (school_year_id, project_id, firstname, lastname, email, created_at, updated_at)';
     $sql = $sql . ' values (:school_year_id, :project_id, :firstname, :lastname, :email, :created_at, :updated_at)';
@@ -98,18 +98,28 @@ class Student //
 
   public function tags($id)
   {
-    $sql="SELECT tag.* FROM student_tag JOIN student ON student_tag.student_id = student.id JOIN tag ON student_tag.tag_id = tag.id WHERE student_tag.student_id=:id ORDER BY tag.id DESC";
+    $sql = "SELECT tag.* FROM student_tag JOIN student ON student_tag.student_id = student.id JOIN tag ON student_tag.tag_id = tag.id WHERE student_tag.student_id=:id ORDER BY tag.id DESC";
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindParam(':id', $id);
     $stmt->execute();
     return $stmt->fetchAll();
   }
 
-  public function allStudentAllTags(string $search='')
+  public function allStudentAllTags(string $search = '')
   {
     $sql = "SELECT student.*, tag.name FROM student_tag JOIN student ON student_tag.student_id = student.id JOIN tag ON student_tag.tag_id = tag.id WHERE tag.name LIKE '%$search%' OR student.firstname LIKE '%$search%' OR student.lastname LIKE '%$search%' ORDER BY tag.id DESC";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
     return $stmt;
+  }
+
+  public function projects()
+  {
+    $sql = "SELECT project.* FROM project JOIN student ON student.project_id = student.id WHERE student.project_id=:id
+          ORDER BY project.id DESC";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindParam(':id', $this->id);
+    $stmt->execute();
+    $this->projects = $stmt->fetchAll();
   }
 }

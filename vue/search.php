@@ -10,6 +10,7 @@
                  <th>Crée le</th>
                  <th>Mise à jour</th>
                  <th>Tag</th>
+                 <!-- <th>Projet</th> -->
                </tr>
 
                <?php
@@ -22,6 +23,7 @@
                    <td><?= $studentsearch['created_at'] ?></td>
                    <td><?= $studentsearch['updated_at'] ?></td>
                    <td><?= $studentsearch['name'] ?></td>
+                   <!-- <td><?= $studentsearch['name_project'] ?></td> -->
                    <td><a href="index.php?table=student&id=<?= $studentsearch['id'] ?>&op=update">🖊️</a></td>
                    <td><a href="index.php?table=student&id=<?= $studentsearch['id'] ?>&op=delete">❌</a></td>
                    <td><a href="index.php?table=student&id=<?= $studentsearch['id'] ?>&op=insert">➕</a></td>
