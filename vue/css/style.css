@@ -45,6 +45,15 @@ table th {
   color: white;
 }
 
+#tag-style {
+  color: rgb(177, 115, 0);
+  font-size: 10px;
+  font-weight: bold;
+  padding-left: 10px;
+  text-align: start;
+  word-spacing: 7px;
+}
+
 table td {
   border: black solid 1px;
   background-color: rgb(243, 242, 242);

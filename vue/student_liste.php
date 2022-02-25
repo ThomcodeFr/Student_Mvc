@@ -23,13 +23,13 @@
 
 
     <tr>
-      <td colspan="8">
-        <?php
-        $studentags=$student->tags($student1['id']);
-        foreach ($studentags as $studentag) {
-            echo "#" . $studentag['name'] . " ";
-        }
+      <td colspan="8" id="tag-style">
+      <?php
+      $studentags = $student->tags($student1['id']);
+      foreach ($studentags as $studentag) {
+        echo "#" . $studentag['name'] . " ";
       }
+    }
       ?>
 
 
