@@ -1,5 +1,5 @@
 # Rendu projet 
-![Aperçu du projet](/apercu.png "Aperçu").
+![Aperçu du projet](/apercu.png "Aperçu")
 
 
 # Consignes
