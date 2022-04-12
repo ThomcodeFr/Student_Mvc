@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : ven. 25 fév. 2022 à 14:30
--- Version du serveur : 10.4.22-MariaDB
--- Version de PHP : 8.1.1
+-- Hôte : localhost:8889
+-- Généré le : mar. 12 avr. 2022 à 06:32
+-- Version du serveur : 5.7.34
+-- Version de PHP : 7.4.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `project` (
   `id` int(11) NOT NULL,
   `name_project` varchar(190) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci,
   `client_name` varchar(190) COLLATE utf8mb4_unicode_ci NOT NULL,
   `start_date` date DEFAULT NULL,
   `checkpoint_date` date DEFAULT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE `project` (
 --
 
 INSERT INTO `project` (`id`, `name_project`, `description`, `client_name`, `start_date`, `checkpoint_date`, `delivery_date`) VALUES
-(1, 'Projet th', 'Projet pour les tests 1', 'Client test 1', '2021-03-01', '2021-04-01', '2021-05-01'),
+(1, 'Projet', 'Projet pour les tests 1', 'Client test 1', '2021-03-01', '2021-04-01', '2021-05-01'),
 (2, 'Minima in iure tenetur.', 'Architecto autem et ab dignissimos.', 'Arnaude Normand-Roy', '2021-04-29', '2021-05-29', '2021-06-30'),
 (3, 'At dignissimos minus.', 'Reiciendis eius reiciendis et.', 'Josette Tanguy', '2021-04-28', '2021-05-31', '2021-06-28'),
 (4, 'Et ducimus consectetur eos voluptatibus.', 'Voluptatem et sit repellendus corrupti nisi dolorum sunt.', 'Gabriel Lemoine-Leleu', '2021-05-01', '2021-05-26', '2021-06-27'),
@@ -68,8 +68,7 @@ INSERT INTO `project` (`id`, `name_project`, `description`, `client_name`, `star
 (37, 'projet', 'blabla', 'jean', NULL, NULL, '2225-10-18'),
 (38, 'gfth', 'dchff', 'ghfgh', NULL, NULL, '1111-11-11'),
 (39, 'jojo', 'gigi', 'rarateeee', NULL, NULL, '1525-10-30'),
-(40, 'bfdb', 'xfbdfb', 'xfyyyyyyyyyyyyy', NULL, NULL, '2022-02-14'),
-(41, 'bfdb', 'xfbdfb', 'xfyyyyyyyyyyyyy', NULL, NULL, '2022-02-14');
+(42, 'Projet', 'Projet pour les tests 1', 'Client test 1', '2021-03-01', NULL, '2021-05-01');
 
 -- --------------------------------------------------------
 
@@ -156,7 +155,7 @@ INSERT INTO `project_tag` (`project_id`, `tag_id`) VALUES
 CREATE TABLE `school_year` (
   `id` int(11) NOT NULL,
   `name` varchar(190) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci,
   `start_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -201,7 +200,7 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `school_year_id`, `project_id`, `firstname`, `lastname`, `email`, `created_at`, `updated_at`) VALUES
-(1, 8, 1, 'Totofg', 'Test', 'toto.test@example.com', '2021-01-01 00:00:00', '2021-01-01 00:00:00'),
+(1, 8, 1, 'Toto', 'PLOUF', 'toto.test@example.com', '2021-01-01 00:00:00', '2021-01-01 00:00:00'),
 (2, 1, 1, 'Titi', 'Test', 'titi.test@example.com', '2021-01-02 00:00:00', '2021-01-02 00:00:00'),
 (3, 1, 1, 'Tata', 'Test', 'tata.test@example.com', '2021-01-03 00:00:00', '2021-01-03 00:00:00'),
 (4, 1, 1, 'Tutu', 'Test', 'tutu.test@example.com', '2021-01-04 00:00:00', '2021-01-04 00:00:00'),
@@ -301,7 +300,13 @@ INSERT INTO `student` (`id`, `school_year_id`, `project_id`, `firstname`, `lastn
 (98, 4, NULL, 'Claude', 'Lamy', 'claude.lamy@club-internet.fr', '2021-01-27 03:46:38', '2021-01-27 03:46:38'),
 (99, 3, NULL, 'Odette', 'Thomas', 'odette.thomas@dbmail.com', '2021-01-30 08:59:36', '2021-01-30 08:59:36'),
 (100, 2, 2, 'Zacharie', 'Evrard', 'zacharie.evrard@orange.fr', '2021-01-30 21:45:59', '2021-01-30 21:45:59'),
-(101, 11, 21, 'Jean-Paul', 'DUPOND', 'jean.paul.dupong@laposte.net', '2022-02-01 11:08:04', '2022-02-01 11:56:27');
+(101, 11, 21, 'Jean-Paul', 'DUPOND', 'jean.paul.dupong@laposte.net', '2022-02-01 11:08:04', '2022-02-01 11:56:27'),
+(116, 8, 1, 'Toto', 'Test', 'toto.test@example.com', '2022-02-25 14:32:38', '2022-02-25 14:32:38'),
+(118, 8, 1, 'Toto', 'PLOUF', 'toto.test@example.com', '2022-02-25 15:13:17', '2022-02-25 15:13:17'),
+(119, 7, 1, 'Toto', 'PLOUFEEE', 'toto.test@example.com', '2022-03-01 14:00:37', '2022-03-01 14:00:37'),
+(120, 8, NULL, 'Thomas', 'samoth', 'dzjldza@gmail.com', '2022-03-01 14:01:15', '2022-03-01 14:01:15'),
+(121, 7, 1, 'Toto', 'PLOUF', 'toto.test@example.com', '2022-03-01 14:08:05', '2022-03-01 14:08:05'),
+(122, 8, 1, 'Toto', 'PLOUF', 'toto.test@example.com', '2022-03-01 14:08:16', '2022-03-01 14:08:16');
 
 -- --------------------------------------------------------
 
@@ -620,7 +625,7 @@ INSERT INTO `student_tag` (`student_id`, `tag_id`) VALUES
 CREATE TABLE `tag` (
   `id` int(11) NOT NULL,
   `name` varchar(190) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `description` longtext COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -638,8 +643,7 @@ INSERT INTO `tag` (`id`, `name`, `description`) VALUES
 (8, 'VueJS', NULL),
 (9, 'Symfony', NULL),
 (10, 'Bash', NULL),
-(11, 'wordpress', 'wordpress'),
-(16, 'gfjfvnvc', 'dfh');
+(11, 'wordpress', 'wordpress');
 
 --
 -- Index pour les tables déchargées
@@ -695,25 +699,25 @@ ALTER TABLE `tag`
 -- AUTO_INCREMENT pour la table `project`
 --
 ALTER TABLE `project`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT pour la table `school_year`
 --
 ALTER TABLE `school_year`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
 -- AUTO_INCREMENT pour la table `tag`
 --
 ALTER TABLE `tag`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Contraintes pour les tables déchargées
