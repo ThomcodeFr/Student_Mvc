@@ -1,6 +1,6 @@
 <?php
 
-require('modele/Student.php');
+require('model/Student.php');
 $student = new Student();
 
 function validForm($student)
@@ -64,7 +64,7 @@ switch ($op) {
     }
   case 'update': {
       if ($id > 0) {
-        require 'modele/SchoolYear.php';
+        require 'model/SchoolYear.php';
         $school_year = new SchoolYear();
         $school_years = $school_year->all();
         if (empty($_POST)) {
@@ -95,7 +95,7 @@ switch ($op) {
     }
   case 'insert':
     if (empty($_POST)) {
-      require 'modele/SchoolYear.php';
+      require 'model/SchoolYear.php';
       $school_year = new SchoolYear();
       $school_years = $school_year->all();
       require_once('vue/student_add.php');

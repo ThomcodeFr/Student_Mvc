@@ -1,6 +1,6 @@
 <?php
 
-require('modele/Project.php');
+require('model/Project.php');
 $project = new Project();
 
 function validForm3($project)

@@ -1,5 +1,5 @@
 <?php
-require('modele/Tag.php');
+require('model/Tag.php');
 $tag = new Tag();
 /* $tag->name = 'test1';
     $tag->description = 'test2';
